@@ -1,6 +1,9 @@
-import { useState } from "react";
 import { JobUrlInput } from "@/components/JobUrlInput";
 import { JobCard, JobData } from "@/components/JobCard";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { FileTextIcon, BriefcaseIcon, BarChartIcon, HeartHandshakeIcon } from "lucide-react";
 
 const Index = () => {
   const [jobData, setJobData] = useState<JobData | null>(null);
@@ -23,13 +26,40 @@ const Index = () => {
     setIsAnalyzing(false);
   };
 
+  const features = [
+    {
+      href: "/resume",
+      icon: FileTextIcon,
+      title: "Resume Analysis",
+      description: "Get AI-powered insights on your resume",
+    },
+    {
+      href: "/job-tracking",
+      icon: BriefcaseIcon,
+      title: "Job Tracking",
+      description: "Track your job applications",
+    },
+    {
+      href: "/analytics",
+      icon: BarChartIcon,
+      title: "Analytics",
+      description: "View your application statistics",
+    },
+    {
+      href: "/ai-counselor",
+      icon: HeartHandshakeIcon,
+      title: "AI Counselor",
+      description: "Get personalized career advice",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-job-background">
       <div className="container py-8 space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-job-primary">Job Application Tracker</h1>
           <p className="text-job-secondary text-lg">
-            Paste a job posting URL to analyze and track your applications
+            Your all-in-one platform for job search and career growth
           </p>
         </div>
         
@@ -42,6 +72,22 @@ const Index = () => {
             <JobCard job={jobData as JobData} isLoading={isAnalyzing} />
           </div>
         )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((feature) => (
+            <Link key={feature.href} to={feature.href}>
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <feature.icon className="h-6 w-6 text-primary" />
+                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
