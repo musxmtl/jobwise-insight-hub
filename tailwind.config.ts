@@ -56,9 +56,10 @@ export default {
           primary: "#1a365d",
           secondary: "#2d3748",
           accent: "#4299e1",
-          background: "#f7fafc",
-          card: "#ffffff",
-          border: "#e2e8f0",
+          background: "#1A1F2C",
+          card: "#221F26",
+          border: "#333333",
+          glass: "rgba(34, 34, 34, 0.4)",
         },
       },
       borderRadius: {
