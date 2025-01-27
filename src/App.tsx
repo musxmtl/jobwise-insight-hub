@@ -20,9 +20,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SidebarProvider>
-          <div className="flex min-h-screen w-full bg-job-background">
+          <div className="flex min-h-screen w-full">
             <AppSidebar />
-            <main className="flex-1 p-8">
+            <main className="flex-1 p-8 overflow-auto">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/resume" element={<Resume />} />
